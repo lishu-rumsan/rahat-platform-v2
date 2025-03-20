@@ -8,6 +8,9 @@ CREATE TYPE "Service" AS ENUM ('EMAIL', 'PHONE', 'WALLET', 'GOOGLE', 'APPLE', 'F
 CREATE TYPE "SignupStatus" AS ENUM ('PENDING', 'APPROVED', 'FAILED', 'REJECTED');
 
 -- CreateEnum
+CREATE TYPE "SettingDataType" AS ENUM ('STRING', 'NUMBER', 'BOOLEAN', 'OBJECT');
+
+-- CreateEnum
 CREATE TYPE "ProjectStatus" AS ENUM ('NOT_READY', 'ACTIVE', 'CLOSED');
 
 -- CreateEnum
@@ -133,6 +136,18 @@ CREATE TABLE "tbl_users_signups" (
 );
 
 -- CreateTable
+CREATE TABLE "tbl_settings" (
+    "name" TEXT NOT NULL,
+    "value" JSONB NOT NULL,
+    "dataType" "SettingDataType" NOT NULL,
+    "requiredFields" TEXT[],
+    "isReadOnly" BOOLEAN NOT NULL DEFAULT false,
+    "isPrivate" BOOLEAN NOT NULL DEFAULT true,
+
+    CONSTRAINT "tbl_settings_pkey" PRIMARY KEY ("name")
+);
+
+-- CreateTable
 CREATE TABLE "tbl_beneficiaries" (
     "id" SERIAL NOT NULL,
     "uuid" UUID NOT NULL,
@@ -234,6 +249,17 @@ CREATE TABLE "tbl_projects" (
 );
 
 -- CreateTable
+CREATE TABLE "tbl_stats" (
+    "name" TEXT NOT NULL,
+    "data" JSONB NOT NULL,
+    "group" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3),
+
+    CONSTRAINT "tbl_stats_pkey" PRIMARY KEY ("name")
+);
+
+-- CreateTable
 CREATE TABLE "tbl_vendors" (
     "id" SERIAL NOT NULL,
     "uuid" UUID NOT NULL,
@@ -307,6 +333,9 @@ CREATE UNIQUE INDEX "tbl_auth_sessions_sessionId_key" ON "tbl_auth_sessions"("se
 CREATE UNIQUE INDEX "tbl_users_signups_uuid_key" ON "tbl_users_signups"("uuid");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "tbl_settings_name_key" ON "tbl_settings"("name");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "tbl_beneficiaries_uuid_key" ON "tbl_beneficiaries"("uuid");
 
 -- CreateIndex
@@ -377,6 +406,9 @@ CREATE UNIQUE INDEX "tbl_beneficiaries_pii_phone_key" ON "tbl_beneficiaries_pii"
 
 -- CreateIndex
 CREATE UNIQUE INDEX "tbl_projects_uuid_key" ON "tbl_projects"("uuid");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "tbl_stats_name_key" ON "tbl_stats"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "tbl_vendors_uuid_key" ON "tbl_vendors"("uuid");

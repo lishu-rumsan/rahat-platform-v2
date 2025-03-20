@@ -1,0 +1,15 @@
+{
+  "name": "@workspace/database",
+  "version": "0.0.0",
+  "dependencies": {
+    "@nestjs/common": "^11.0.1",
+    "prisma": "^6.5.0",
+    "@rumsan/prisma": "1.0.130"
+  },
+  "devDependencies": {
+    "@prisma/client": "^6.5.0"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

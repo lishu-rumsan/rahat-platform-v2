@@ -4,7 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@rumsan/shadcn-ui/*": ["../../packages/shadcn-ui/src/*"]
+      "@rumsan/shadcn-ui/*": ["../../packages/shadcn-ui/src/*"],
+      "@prisma/client": ["../../packages/database/client/*"]
     },
     "plugins": [
       {

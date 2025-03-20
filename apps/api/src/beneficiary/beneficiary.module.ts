@@ -7,7 +7,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { StatsModule } from '@rahat/stats';
-import { PrismaModule } from '@rumsan/prisma';
+// import { PrismaModule } from '@rumsan/prisma';
 import { BQUEUE, ProjectContants } from '@workspace/sdk';
 import { BeneficiaryConsumer } from 'src/consumers/beneficiary.consumer';
 import { BeneficiaryController } from './beneficiary.controller';
@@ -15,6 +15,8 @@ import { BeneficiaryService } from './beneficiary.service';
 import { BeneficiaryUtilsService } from './beneficiary.utils.service';
 import { BeneficiaryStatService } from './beneficiaryStat.service';
 import { VerificationService } from './verification.service';
+
+import { PrismaModule } from '@workspace/database';
 @Module({
   imports: [
     ClientsModule.register([
