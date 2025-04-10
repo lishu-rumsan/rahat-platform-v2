@@ -1,15 +1,24 @@
 {
-  "name": "@workspace/database",
+  "name": "@workspace/db",
   "version": "0.0.0",
+  "scripts": {
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev --skip-generate",
+    "db:deploy": "prisma migrate deploy"
+  },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
-    "prisma": "^6.5.0",
-    "@rumsan/prisma": "1.0.130"
+    "@prisma/client": "6.5.0",
+    "@rumsan/prisma": "1.0.130",
+    "@rumsan/sdk": "0.0.45"
   },
   "devDependencies": {
-    "@prisma/client": "^6.5.0"
+    "prisma": "^6.5.0"
   },
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./prisma": "./generated/client/index.js",
+    "./database/types": "./generated/client/index.d.ts",
+    "./prisma/types/*": "./node_modules/*"
   }
 }

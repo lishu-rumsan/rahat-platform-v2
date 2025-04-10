@@ -4,7 +4,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { StatsService } from '@rahat/stats';
 import { SettingsService } from '@rumsan/extensions/settings';
-import { PrismaService } from '@rumsan/prisma';
+import { PrismaService } from '@workspace/db';
 import { MS_TIMEOUT, ProjectContants } from '@workspace/sdk';
 import { timeout } from 'rxjs';
 import { hasKey } from 'src/utils/objectUtil';
@@ -518,7 +518,7 @@ export class BeneficiaryStatService {
   }
 
   async getAllStats(group = 'beneficiary') {
-    return this.statsService.getByGroup(group, {
+    // return this.statsService.getByGroup(group, {
       name: true,
       data: true,
     });

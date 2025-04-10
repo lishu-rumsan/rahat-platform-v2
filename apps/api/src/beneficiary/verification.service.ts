@@ -4,7 +4,7 @@ import { InjectQueue } from '@nestjs/bull';
 import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { ClientProxy } from '@nestjs/microservices';
-import { PrismaService } from '@rumsan/prisma';
+import { PrismaService } from '@workspace/db';
 import {
   BeneficiaryJobs,
   BQUEUE,

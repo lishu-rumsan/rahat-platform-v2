@@ -3,8 +3,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
-import { Beneficiary } from '@prisma/client';
-import { PaginatorTypes, PrismaService } from '@rumsan/prisma';
+import { Beneficiary, PrismaService } from '@workspace/db';
 import {
   AAPayload,
   BeneficiaryConstants,

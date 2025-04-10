@@ -4,9 +4,12 @@ import { InjectQueue } from '@nestjs/bull';
 import { Inject, Injectable } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
-// import { Beneficiary } from '@prisma/client';
-// import { paginator, PaginatorTypes } from '@rumsan/prisma';
-import { PrismaService } from '@workspace/database';
+import {
+  Beneficiary,
+  paginator,
+  PaginatorTypes,
+  PrismaService,
+} from '@workspace/db';
 import {
   BeneficiaryConstants,
   BeneficiaryEvents,
